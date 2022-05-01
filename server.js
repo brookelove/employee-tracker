@@ -19,3 +19,38 @@
     A.select employee to update and their new role and this info is updated 
 */
 
+// WHERE ALL PROMPTS LIVE
+
+const inquirer = require ("inquirer");
+const mysql = require ('mysql2');
+
+const askhome = () => {
+    inquirer.prompt ([
+        {
+            type: 'list',
+            name: 'selection',
+            message: 'What would you like to do?',
+            choices: ["View all Departments", "View All Employees", "Add a Department", "Add a Route", "Add an Employee","Update an Employee Role", "QUIT"]
+        }
+    ]).then (ans => {
+        switch (ans.selection) {
+            case 'View all Departments':
+                break;
+            case 'View All Employees':
+                break;
+            case 'Add a Department':
+                break;
+            case 'Add a Route':
+                break;
+            case 'Add an Employee':
+                break;
+            case 'Update an Employee Role':
+                break;
+            default: 
+                console.log('See you next time!');
+                break;
+        }
+    })
+}
+// function needs to be called in order to run
+askhome();
