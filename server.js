@@ -34,16 +34,28 @@ const mainmenu = () => {
     ]).then (ans => {
         switch (ans.selection) {
             case 'View all Departments':
+                departments();
+                mainmenu();
                 break;
             case 'View All Employees':
+                employees();
+                mainmenu();
                 break;
             case 'Add a Department':
+                addDepartment();
+                mainmenu()
                 break;
-            case 'Add a Route':
+            case 'Add a Role':
+                addRole();
+                mainmenu();
                 break;
             case 'Add an Employee':
+                addEmployee();
+                mainmenu();
                 break;
             case 'Update an Employee Role':
+                updateEmployee()
+                mainmenu();
                 break;
             default: 
                 console.log('See you next time!');
