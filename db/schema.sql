@@ -30,7 +30,7 @@ CREATE TABLE roles (
 );
 
 -- creates the third table it does rely on the second table for the department id 
-CREATE TABLE employee (
+CREATE TABLE employees (
     id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
     first_name VARCHAR(30) NOT NULL,
     last_name VARCHAR (30) NOT NULL,

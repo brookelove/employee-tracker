@@ -18,7 +18,6 @@
 7. Update employee 
     A.select employee to update and their new role and this info is updated 
 */
-
 // WHERE ALL PROMPTS LIVE
 
 const inquirer = require ("inquirer");
