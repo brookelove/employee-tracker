@@ -24,7 +24,7 @@
 const inquirer = require ("inquirer");
 const mysql = require ('mysql2');
 
-const askhome = () => {
+const mainmenu = () => {
     inquirer.prompt ([
         {
             type: 'list',
@@ -53,4 +53,4 @@ const askhome = () => {
     })
 }
 // function needs to be called in order to run
-askhome();
+mainmenu();
