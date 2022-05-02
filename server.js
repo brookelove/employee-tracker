@@ -22,7 +22,16 @@
 
 const inquirer = require ("inquirer");
 const mysql = require ('mysql2');
-
+// connect to the database 
+const db = mysql.createConnection (
+    {
+        host: 'localhost',
+        user: 'root',
+        password: 'password',
+        database:'incorperated_db'
+    }, 
+    console.log('Connected to the incorpoerated_db database!')
+)
 const mainmenu = () => {
     inquirer.prompt ([
         {
