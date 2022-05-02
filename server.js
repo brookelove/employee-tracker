@@ -19,26 +19,17 @@
     A.select employee to update and their new role and this info is updated 
 */
 // WHERE ALL PROMPTS LIVE
-
 const inquirer = require ("inquirer");
-const mysql = require ('mysql2');
+const controller = require ("./controller/controller")
 // connect to the database 
-const db = mysql.createConnection (
-    {
-        host: 'localhost',
-        user: 'root',
-        password: 'password',
-        database:'incorperated_db'
-    }, 
-    console.log('Connected to the incorpoerated_db database!')
-)
+
 const mainmenu = () => {
     inquirer.prompt ([
         {
             type: 'list',
             name: 'selection',
             message: 'What would you like to do?',
-            choices: ["View all Departments", "View All Employees", "Add a Department", "Add a Route", "Add an Employee","Update an Employee Role", "QUIT"]
+            choices: ["View all Departments", "View All Employees", "View All Roles","Add a Department", "Add a Route", "Add an Employee","Update an Employee Role", "QUIT"]
         }
     ]).then (ans => {
         switch (ans.selection) {
@@ -48,6 +39,10 @@ const mainmenu = () => {
                 break;
             case 'View All Employees':
                 employees();
+                mainmenu();
+                break;
+            case 'View All Employees':
+                role();
                 mainmenu();
                 break;
             case 'Add a Department':
@@ -72,5 +67,5 @@ const mainmenu = () => {
         }
     })
 }
-// function needs to be called in order to run
+// function needs to be called in order to start
 mainmenu();
