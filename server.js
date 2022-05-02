@@ -34,15 +34,16 @@ const mainmenu = () => {
     ]).then (ans => {
         switch (ans.selection) {
             case 'View all Departments':
-                departments();
+                // need to figure out how to properly connect the database to the cases
+                db.departments();
                 mainmenu();
                 break;
             case 'View All Employees':
-                employees();
+                db.employees();
                 mainmenu();
                 break;
             case 'View All Employees':
-                role();
+                db.role();
                 mainmenu();
                 break;
             case 'Add a Department':
@@ -72,6 +73,55 @@ mainmenu();
 
 const addDepartment = () => {
     inquirer.prompt ([
-        
+        {
+            type: 'input',
+            name: 'department_name',
+            message: 'What is the name of your department?',
+        }
+    ])
+}
+
+const addRole = () => {
+    inquirer.prompt ([
+        {
+            type: 'input',
+            name: 'role_title',
+            message: 'What is the name of this role?',
+        },
+        {
+            type: 'input',
+            name: 'role_salary',
+            message: 'How much does this role pay?',
+        },
+        {
+            type: 'input',
+            name: 'role_department',
+            message: 'What department is this role found in?',
+        },
+    ])
+}
+
+const addEmployee = () => {
+    inquirer.prompt ([
+        {
+            type: 'input',
+            name: 'employee_firstName',
+            message: 'What is the first name of the employee?',
+        },
+        {
+            type: 'input',
+            name: 'employee_lastName',
+            message: 'What is the last name of this employee?',
+        },
+        {
+            type: 'input',
+            name: 'employee_role',
+            message: 'What role does this employee have in the company?',
+        },
+        {
+            type: 'input',
+            name: 'employee_manager',
+            message: 'Who is the manager of the employee?',
+        },
     ])
 }
