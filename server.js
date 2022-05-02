@@ -20,7 +20,7 @@
 */
 // WHERE ALL PROMPTS LIVE
 const inquirer = require ("inquirer");
-const controller = require ("./controller/controller")
+const db = require ("./db");
 // connect to the database 
 
 const mainmenu = () => {
@@ -69,3 +69,9 @@ const mainmenu = () => {
 }
 // function needs to be called in order to start
 mainmenu();
+
+const addDepartment = () => {
+    inquirer.prompt ([
+        
+    ])
+}
