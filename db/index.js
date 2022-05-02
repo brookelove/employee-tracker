@@ -1,4 +1,8 @@
-createConnection (
+const department = require('../lib/department');
+const employee = require('../lib/employee');
+const role = require('../lib/role');
+const mysql = require('mysql2');
+const db = mysql.createConnection (
     {
         host: 'localhost',
         user: 'root',
@@ -49,4 +53,5 @@ class DB {
     }
 }
 
-module.exports = new DB(connection);
+module.exports = new DB ();
+// new DB (connection) was there first to export the connection
