@@ -73,13 +73,13 @@ const viewDepartments = () => {
     }).then(() => mainmenu());
 }
 const viewEmployees = () => {
-    db.employees()
+    db.employee()
     .then(([employee]) => {
         console.table(employee)
     }).then(() => mainmenu());
 }
 const viewRoles = ()=> {
-    db.roles()
+    db.role()
     .then(([role]) => {
         console.table(role);
     }).then (() => mainmenu());
