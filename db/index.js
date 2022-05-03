@@ -34,10 +34,9 @@ class DB {
             "INSERT INTO role SET ?, ?, ?", role)
     }
     
-    addEmployee = () => {
+    addEmployee = (employee) => {
         return this.connection.promise().query(
-            "INSERT INTO employee (first_name, last_name, role_id, manager_id) VALUES (?,?,?,?);"
-        );
+            "INSERT INTO employee SET ?,?,?,?;", employee)
     }
     
     updateEmployee = () =>  {

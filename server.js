@@ -29,7 +29,7 @@ const mainmenu = () => {
             type: 'list',
             name: 'selection',
             message: 'What would you like to do?',
-            choices: ["View all Departments", "View All Employees", "View All Roles","Add a Department", "Add a Route", "Add an Employee","Update an Employee Role", "QUIT"]
+            choices: ["View all Departments", "View All Employees", "View All Roles","Add a Department", "Add a Role", "Add an Employee","Update an Employee Role", "QUIT"]
         }
     ]).then (ans => {
         switch (ans.selection) {
@@ -48,11 +48,9 @@ const mainmenu = () => {
                 break;
             case 'Add a Role':
                 addRole();
-                mainmenu();
                 break;
             case 'Add an Employee':
                 addEmployee();
-                mainmenu();
                 break;
             case 'Update an Employee Role':
                 updateEmployee()
