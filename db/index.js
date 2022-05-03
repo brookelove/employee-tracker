@@ -28,22 +28,24 @@ class DB {
     addDepartment = () => {
         return this.connection.promise().query (
             "INSERT INTO department (name) VALUES (?);"
-        )
+        );
     }
     
     addRole = () => {
         return this.connection.promise().query (
-            ""
-        )
+            "INSERT INTO role (title, salary, department_id) VALUES (?, ?, ?);"
+        );
     }
     
     addEmployee = () => {
-        console.log("departments");
+        return this.connection.promise().query(
+            "INSERT INTO employee (first_name, last_name, role_id, manager_id) VALUES (?,?,?,?);"
+        );
     }
     
     updateEmployee = () =>  {
         return this.connnection.promise().query(
-            "UPDATE employee.id, employee.first_name, employee.last_name, role.id, CONCAT(manager.first_name, ' ', manager.last_name AS manager FROM employee LEFT JOIN roles on employee.role_id = roles.id"
+            "UPDATE employee.id, employee.first_name, employee.last_name, role.id, CONCAT(manager.first_name, ' ', manager.last_name AS manager FROM employee LEFT JOIN roles on employee.role_id = roles.id;"
         )
     }
 }

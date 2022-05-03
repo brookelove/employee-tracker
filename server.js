@@ -34,33 +34,28 @@ const mainmenu = () => {
     ]).then (ans => {
         switch (ans.selection) {
             case 'View all Departments':
-                // need to figure out how to properly connect the database to the cases
                 viewDepartments();
-                // db.departments();
-                // mainmenu();
                 break;
             case 'View All Employees':
-                db.employees();
-                mainmenu();
+                viewEmployees();
                 break;
-            case 'View All Employees':
-                db.role();
+            case 'View All Roles':
+                viewRoles();
                 mainmenu();
                 break;
             case 'Add a Department':
-                db.addDepartment();
-                mainmenu()
+                addDepartment();
                 break;
             case 'Add a Role':
-                db.addRole();
+                addRole();
                 mainmenu();
                 break;
             case 'Add an Employee':
-                db.addEmployee();
+                addEmployee();
                 mainmenu();
                 break;
             case 'Update an Employee Role':
-                db.updateEmployee()
+                updateEmployee()
                 mainmenu();
                 break;
             default: 
@@ -71,6 +66,24 @@ const mainmenu = () => {
 }
 // function needs to be called in order to start
 mainmenu();
+const viewDepartments = () => {
+    db.departments()
+    .then(([departments]) => {
+        console.table(departments);
+    }).then(() => mainmenu());
+}
+const viewEmployees = () => {
+    db.employees()
+    .then(([employee]) => {
+        console.table(employee)
+    }).then(() => mainmenu());
+}
+const viewRoles = ()=> {
+    db.roles()
+    .then(([role]) => {
+        console.table(role);
+    }).then (() => mainmenu());
+}
 
 const addDepartment = () => {
     inquirer.prompt ([
@@ -85,8 +98,7 @@ const addDepartment = () => {
 
         db.addDepartment(departmentName)
         .then(() => console.log(`Department ${departmentName} added`))
-        .then(() => //load prompts)
-        )
+        .then(() => mainmenu())
     })
 }
 
@@ -107,7 +119,15 @@ const addRole = () => {
             name: 'role_department',
             message: 'What department is this role found in?',
         },
-    ])
+    ]).then (ans => {
+        const roleTitle = ans.role_title;
+        const roleSalary = ans.role_salary;
+        const roleDepartment = ans.role_department;
+
+        db.addRole(roleTitle, roleSalary, roleDepartment)
+        .then(() => console.log (`Role ${roleTitle} added`))
+        .then(() => mainmenu())
+    })
 }
 
 const addEmployee = () => {
@@ -132,13 +152,15 @@ const addEmployee = () => {
             name: 'employee_manager',
             message: 'Who is the manager of the employee?',
         },
-    ])
+    ]).then (ans => {
+        const employeeFirstName = ans.employee_firstName;
+        const employeeLastName = ans.employee_lastName;
+        const employeeRole = ans.employee_role;
+        const employeeManager = ans.employee_manager;
+
+        db.employee(employeeFirstName, employeeLastName, employeeRole, employeeManager)
+        .then (() => console.log(`Employee ${employeeFirstName} ${employeeLastName} added`))
+        .then(() => mainmenu())
+    })
 }
 
-const viewDepartments = () => {
-    db.departments()
-    .then(([departments]) => {
-        // do whatever you need with departments
-        console.table(departments);
-    }).then(() => mainmenu());
-}
