@@ -1,25 +1,16 @@
 const department = require('../lib/department');
 const employee = require('../lib/employee');
 const role = require('../lib/role');
-const mysql = require('mysql2');
-const db = mysql.createConnection (
-    {
-        host: 'localhost',
-        user: 'root',
-        password: 'password',
-        database:'incorperated_db'
-    }, 
-    console.log('Connected to the incorpoerated_db database!')
-)
+const connection = require('./connection');
 
 class DB {
-    constructor (connection) {
+    constructor(connection) {
         this.connection = connection;
     }
 
     departments () {
         return this.connection.promise().query(
-            "SELECT department.id, department.name;"
+            "SELECT department.id, department.name FROM department;"
         )
     }
     
@@ -34,24 +25,28 @@ class DB {
         );
     }
     
-    addDepartment () {
+    addDepartment = () => {
         return this.connection.promise().query (
-            "SELECT "
+            "INSERT INTO department (name) VALUES (?);"
         )
     }
     
-    addRole () {
-        console.log("departments");
+    addRole = () => {
+        return this.connection.promise().query (
+            ""
+        )
     }
     
-    addEmployee () {
+    addEmployee = () => {
         console.log("departments");
     }
     
     updateEmployee = () =>  {
-        console.log("departments");
+        return this.connnection.promise().query(
+            "UPDATE employee.id, employee.first_name, employee.last_name, role.id, CONCAT(manager.first_name, ' ', manager.last_name AS manager FROM employee LEFT JOIN roles on employee.role_id = roles.id"
+        )
     }
 }
 
-module.exports = new DB ();
+module.exports = new DB (connection);
 // new DB (connection) was there first to export the connection

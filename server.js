@@ -35,8 +35,9 @@ const mainmenu = () => {
         switch (ans.selection) {
             case 'View all Departments':
                 // need to figure out how to properly connect the database to the cases
-                db.departments();
-                mainmenu();
+                viewDepartments();
+                // db.departments();
+                // mainmenu();
                 break;
             case 'View All Employees':
                 db.employees();
@@ -47,19 +48,19 @@ const mainmenu = () => {
                 mainmenu();
                 break;
             case 'Add a Department':
-                addDepartment();
+                db.addDepartment();
                 mainmenu()
                 break;
             case 'Add a Role':
-                addRole();
+                db.addRole();
                 mainmenu();
                 break;
             case 'Add an Employee':
-                addEmployee();
+                db.addEmployee();
                 mainmenu();
                 break;
             case 'Update an Employee Role':
-                updateEmployee()
+                db.updateEmployee()
                 mainmenu();
                 break;
             default: 
@@ -78,7 +79,15 @@ const addDepartment = () => {
             name: 'department_name',
             message: 'What is the name of your department?',
         }
-    ])
+    ]).then(ans => {
+        console.log('ANSWERL ', ans);
+        const departmentName = ans.department_name;
+
+        db.addDepartment(departmentName)
+        .then(() => console.log(`Department ${departmentName} added`))
+        .then(() => //load prompts)
+        )
+    })
 }
 
 const addRole = () => {
@@ -124,4 +133,12 @@ const addEmployee = () => {
             message: 'Who is the manager of the employee?',
         },
     ])
+}
+
+const viewDepartments = () => {
+    db.departments()
+    .then(([departments]) => {
+        // do whatever you need with departments
+        console.table(departments);
+    }).then(() => mainmenu());
 }
