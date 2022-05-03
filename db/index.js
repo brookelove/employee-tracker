@@ -31,18 +31,19 @@ class DB {
     
     addRole = (role) => {
         return this.connection.promise().query (
-            "INSERT INTO role SET ?, ?, ?", role)
+            "INSERT INTO role (title, salary, department_id) VALUES (?, ?, ?)", role)
     }
     
     addEmployee = (employee) => {
         return this.connection.promise().query(
-            "INSERT INTO employee SET ?,?,?,?;", employee)
+            "INSERT INTO employee (first_name, last_name, role_id, manager_id) VALUES (?,?,?,?);", employee)
     }
     
     updateEmployee = () =>  {
         return this.connnection.promise().query(
             "UPDATE employee.id, employee.first_name, employee.last_name, role.id, CONCAT(manager.first_name, ' ', manager.last_name AS manager FROM employee LEFT JOIN roles on employee.role_id = roles.id;"
         )
+
     }
 }
 
