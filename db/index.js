@@ -1,4 +1,5 @@
 
+const { AnonymousSubject } = require('rxjs/internal/Subject');
 const connection = require('./connection');
 
 class DB {
@@ -23,16 +24,14 @@ class DB {
         );
     }
     
-    addDepartment = () => {
+    addDepartment = (department) => {
         return this.connection.promise().query (
-            "INSERT INTO department (name) VALUES (?);"
-        );
+            "INSERT INTO department SET ?", department)
     }
     
-    addRole = () => {
+    addRole = (role) => {
         return this.connection.promise().query (
-            "INSERT INTO role (title, salary, department_id) VALUES (?, ?, ?);"
-        );
+            "INSERT INTO role SET ?, ?, ?", role)
     }
     
     addEmployee = () => {
