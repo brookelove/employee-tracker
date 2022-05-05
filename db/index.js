@@ -24,19 +24,19 @@ class DB {
         );
     }
     
-    addDepartment = (department) => {
+    addDepartment = (departmentName) => {
         return this.connection.promise().query (
-            "INSERT INTO department SET ?", department)
+            "INSERT INTO department (name) VALUES (?)", [departmentName])
     }
     
-    addRole = (role) => {
+    addRole = (roleTitle, roleSalary, roleDepartment) => {
         return this.connection.promise().query (
-            "INSERT INTO role (title, salary, department_id) VALUES (?, ?, ?)", role)
+            "INSERT INTO roles (title, salary, department_id) VALUES (?, ?, ?)", [roleTitle, roleSalary, roleDepartment])
     }
     
-    addEmployee = (employee) => {
+    addEmployee = (employeeFirstName, employeeLastName, employeeRole, employeeManager) => {
         return this.connection.promise().query(
-            "INSERT INTO employee (first_name, last_name, role_id, manager_id) VALUES (?,?,?,?);", employee)
+            "INSERT INTO employee (first_name, last_name, role_id, manager_id) VALUES (?,?,?,?);", [employeeFirstName, employeeLastName, employeeRole, employeeManager])
     }
     
     updateEmployee = () =>  {

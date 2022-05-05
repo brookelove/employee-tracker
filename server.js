@@ -92,7 +92,8 @@ const addDepartment = () => {
         }
     ]).then(ans => {
         console.log('ANSWERL ', ans);
-        const departmentName = ans.department_name;
+        const departmentName = ans.department_name;     // department_name: 'the name'
+
 
         db.addDepartment(departmentName)
         .then(() => console.log(`Department ${departmentName} added`))
@@ -118,6 +119,7 @@ const addRole = () => {
             message: 'What department is this role found in?',
         },
     ]).then (ans => {
+        console.log(ans)
         const roleTitle = ans.role_title;
         const roleSalary = ans.role_salary;
         const roleDepartment = ans.role_department;
