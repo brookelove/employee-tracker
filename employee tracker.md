@@ -39,9 +39,9 @@
 
 # Mock Up
 
-![Image of employee tracker]()
+![Image of employee tracker](./assets/Screen%20Shot%202022-05-04%20at%206.08.47%20PM.png)
 
-![Gif of employee tracker]()
+![Video Link to employee tracker](https://www.canva.com/design/DAE_yRsiTvc/KJbCiM0kPCqkntUNlNfFTg/watch?utm_content=DAE_yRsiTvc&utm_campaign=designshare&utm_medium=link&utm_source=publishsharelink)
 
 # Future
 
