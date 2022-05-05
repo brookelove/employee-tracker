@@ -31,7 +31,23 @@
 
 # Install Instructions
 
-    You will have to install mysql, as well as, inquirer and console.table.
+   1. Clone the Application by runnint git clone through a desired location in terminal
+
+    > git clone (applications SSH Key or equivalent )
+
+   2. run npm i to install all the necessary items (mysql, as well as, inquirer and console.table)
+
+    > npm i
+
+   3. Go into your mysql and Source the schema.sql and then the seeds.sql
+
+    > SOURCE db/schema.sql 
+
+    > SOURCE db/seeds.sql
+
+   4. Get back to main file and run in terminal npm run start
+
+   > npm run start
 
 # Usage
 
@@ -45,7 +61,7 @@
 
 # Future
 
-    I would like to implememnt more usability by updating the managers, departments, viewing employees by differert categories like roles or departments.
+    I would like to implememnt more usability by updating the managers, departments, viewing employees by differert categories like roles or departments. I would also like to figure out more of the bugs that are going on with why there is a double and sometimes triple of each item in the table associated with that department. 
 
 # License
 
@@ -55,6 +71,6 @@
 
 Feel Free to reach me at!
 
-brookelove@outlook.com | 
+* brookelove@outlook.com
 
-[brookelove Profile](https://github.com/brookelove)
+* [brookelove Profile](https://github.com/brookelove)
